@@ -14,6 +14,7 @@ import {
 } from '@/components/ui/drawer'
 import { NetRequest } from './types'
 import { Textarea } from '@/components/ui/textarea'
+import { Editor } from '@/components/Editor/editor'
 
 export function EditDrawer({
   open,
@@ -40,19 +41,18 @@ export function EditDrawer({
         <div className="mx-auto w-full h-full flex flex-col">
           <DrawerHeader className="flex-row items-center justify-between">
             <DrawerTitle>{request?.url}</DrawerTitle>
-            <DrawerClose asChild>
-              <X className="h-6 w-6 cursor-pointer" />
-            </DrawerClose>
+            <div className="flex flex-row items-center gap-2">
+              <Button size="sm" className="cursor-pointer hover:bg-primary/80">
+                <span className="text-sm">Save</span>
+              </Button>
+              <DrawerClose asChild>
+                <X className="h-6 w-6 cursor-pointer hover:text-black/80" />
+              </DrawerClose>
+            </div>
           </DrawerHeader>
           <div className="pr-4 pl-4 flex-1">
             <div className="mt-3 h-full pb-5">
-              <Textarea
-                className="h-full"
-                value={editValue}
-                onChange={(event) => {
-                  setEditValue(event.target.value)
-                }}
-              />
+              <Editor value={editValue} language="json" onChange={setEditValue} />
             </div>
           </div>
           <DrawerFooter className="flex-row">

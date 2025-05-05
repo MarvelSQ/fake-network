@@ -23,6 +23,7 @@
     "zip": "npm run build && node src/zip.js"
   },
   "dependencies": {
+    "@monaco-editor/react": "^4.7.0",
     "@radix-ui/react-dialog": "^1.1.11",
     "@radix-ui/react-slot": "^1.2.0",
     "@radix-ui/react-switch": "^1.2.2",
