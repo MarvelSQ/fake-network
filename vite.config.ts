@@ -1,6 +1,9 @@
 import { defineConfig } from 'vite'
 import { crx } from '@crxjs/vite-plugin'
 import react from '@vitejs/plugin-react'
+// @ts-ignore
+import tailwindcss from '@tailwindcss/vite'
+import path from 'node:path'
 
 import manifest from './src/manifest'
 
@@ -16,8 +19,16 @@ export default defineConfig(({ mode }) => {
         },
       },
     },
+    resolve: {
+      alias: [
+        {
+          find: '@',
+          replacement: path.join(__dirname, './src'),
+        },
+      ],
+    },
 
-    plugins: [crx({ manifest }), react()],
+    plugins: [crx({ manifest }), react(), tailwindcss()],
     legacy: {
       skipWebSocketTokenCheck: true,
     },
